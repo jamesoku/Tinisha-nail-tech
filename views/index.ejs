@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mstyle.css" />
+    <link rel="stylesheet" href="/style.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+
     <script defer src="index.js"></script>
     <title>Document</title>
   </head>
@@ -18,7 +18,7 @@
       <div class="container">
         <div class="logo">
           <h2>
-            <a href="#">Tanesha's Painted Perfections</a>
+            <a href="/client/login">Tanesha's Painted Perfections</a>
           </h2>
         </div>
       </div>
@@ -79,7 +79,6 @@
         </div>
         <div class="price_sub">
           <h2>Pedicure</h2>
-
           <div>
             <ul>
               <li>Basic Pedicure - $20</li>
@@ -99,17 +98,25 @@
       <div class="container contact__container">
         <div class="contact__options">
           <article class="contact__option">
+            <a href=""><i class="bx bxl-gmail"></i></a>
             <h4>Email</h4>
             <h5>okujames7@gmail.com</h5>
             <a href="mailto:@gmail.com" target="_blank">Send a message</a>
           </article>
           <article class="contact__option">
+            <a href=""><i class="bx bxl-messenger"></i></a>
             <h4>Messenger</h4>
-            <h5>James Oku</h5>
+            <h5>Tanesha Bautista</h5>
+            <a href="https://m.me/Okujame" target="_blank">Send a message</a>
+          </article>
+          <article class="contact__option">
+            <a href=""><i class="bx bxl-instagram-alt"></i></a>
+            <h4>Instagram</h4>
+            <h5>Tanes08_</h5>
             <a href="https://m.me/Okujame" target="_blank">Send a message</a>
           </article>
         </div>
-        <form>
+        <form id="contact">
           <input type="text" name="name" placeholder="Full Name" required />
           <input type="email" name="email" placeholder="Email" required />
           <textarea
@@ -118,11 +125,23 @@
             rows="7"
             placeholder="Message"
             required
-          >
-          </textarea>
+          ></textarea>
           <button type="submit" class="btn-primary">Send Message</button>
         </form>
       </div>
     </section>
+    <footer>
+      <a class="footer__logo">Tanesha's Painted Perfections</a>
+      <ul class="permalinks">
+        <a href=""><i class="bx bxl-twitter"></i></a>
+        <a href=""><i class="bx bxl-instagram-alt"></i></a>
+        <a href=""><i class="bx bxl-messenger"></i></a>
+        <a href=""><i class="bx bxl-gmail"></i></a>
+      </ul>
+
+      <div class="footer_copyright">
+        <p>&copy;Tanesha's Painted Perfections. All rights reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>
