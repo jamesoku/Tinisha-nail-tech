@@ -3,13 +3,17 @@ const User = require("../models/userschema");
 const bcrypt = require("bcrypt");
 var ejs = require("ejs");
 const jwt = require("jsonwebtoken");
+const backCon = require("../controllers/backCon");
+
 require("dotenv").config();
 clientCon.buildLogin = async function (req, res, next) {
   res.render("../views/login");
 };
 
 clientCon.buildback = async function (req, res, next) {
-  res.render("../views/back");
+  const imagelist = await backCon.imageCon.BuildImageList();
+
+  res.render("../views/back", { imagelist });
 };
 
 clientCon.loginclient = async function (req, res) {

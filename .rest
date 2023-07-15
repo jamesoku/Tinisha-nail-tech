@@ -7,7 +7,6 @@ Content-Type: application/json
 }
 
 ###
-
 POST http://localhost:3000/client/login HTTP/1.1
 Content-Type: application/json
 
@@ -15,3 +14,28 @@ Content-Type: application/json
    "client_email" : "taneshabautista@yahoo.com",
    "client_password" : "Tinish$H208M"
 }
+###
+POST http://localhost:3000/back/addimage HTTP/1.1
+Content-Type: application/json
+
+
+###
+POST http://localhost:3000/back/addboxlist HTTP/1.1
+Content-Type: application/json
+
+###
+POST http://localhost:3000/back/changelistname/box2 HTTP/1.1
+Content-Type: application/json
+
+###
+POST   http://localhost:3000/back/getimagelist HTTP/1.1
+Content-Type: application/json
+
+
+###
+POST http://localhost:3000/back/addimagelist HTTP/1.1
+Content-Type: application/json
+
+###
+POST http://localhost:3000/back/deleteimage HTTP/1.1
+Content-Type: application/json

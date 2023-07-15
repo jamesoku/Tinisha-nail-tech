@@ -62,7 +62,7 @@ footer {
 #price_main {
   display: flex;
   flex-direction: row;
-  gap: 10vw;
+  gap: 3vw;
 }
 
 #contact {
@@ -173,10 +173,6 @@ ul {
 
 .hamburger {
   display: none;
-}
-
-.slide {
-  display: block !important;
 }
 
 body {
@@ -331,16 +327,24 @@ section {
   border: 2px solid #076343;
 }
 
+.mySlides {
+  width: auto;
+  height: 100%;
+  transition: opacity 0.5s;
+  border-radius: 15px 0 0 0;
+  transform: scale(1);
+}
+
 .hero .mid .placeholder {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 55%;
   height: 600px;
-  background-color: #212121;
-  background-image: url(/images/IMG-0999.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-color: transparent;
   border-radius: 15px 0 0 0;
-  box-shadow: 0 0 5px #21212130;
+  overflow: hidden;
 }
 
 .hero .connect {

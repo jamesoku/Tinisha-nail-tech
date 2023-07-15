@@ -10,7 +10,6 @@
       rel="stylesheet"
     />
 
-    <script defer src="index.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -41,7 +40,11 @@
               <a href="">Book Now</a>
             </div>
           </div>
-          <div class="placeholder"></div>
+          <div class="placeholder">
+            <% imagelist.forEach(image => { %> <img class="mySlides"
+            src="data:<%=image.image.contentType
+            %>;base64,<%=image.image.data.toString("base64")%>" /> <% }) %>
+          </div>
         </div>
         <div class="connect">
           <a href=""><i class="bx bxl-twitter"></i></a>
@@ -64,6 +67,18 @@
 
     <section id="pricing">
       <h2>Pricing</h2>
+      <!-- <div id="price_main">
+        <div class="price_sub">
+          <h2>Full Set</h2>
+          <div>
+            <ul>
+              <li>Basic Manicure - $20</li>
+              <li>Basic Manicure - $20</li>
+              <li>Basic Manicure - $20</li>
+              <li>Basic Manicure - $20</li>
+            </ul>
+          </div>
+        </div>
       <div id="price_main">
         <div class="price_sub">
           <h2>Manicure</h2>
@@ -88,7 +103,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <section id="contact">
@@ -118,7 +133,7 @@
         </div>
         <form id="contact">
           <input type="text" name="name" placeholder="Full Name" required />
-          <input type="email" name="email" placeholder="Email" required />
+          <input type="email" name="email" placeholder="Your Email" required />
           <textarea
             name="message"
             id="7"
@@ -143,5 +158,23 @@
         <p>&copy;Tanesha's Painted Perfections. All rights reserved.</p>
       </div>
     </footer>
+    <script defer>
+      var myIndex = 0;
+      carousel();
+
+      function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {
+          myIndex = 1;
+        }
+        x[myIndex - 1].style.display = "block";
+        setTimeout(carousel, 2000); // Change image every 2 seconds
+      }
+    </script>
   </body>
 </html>
