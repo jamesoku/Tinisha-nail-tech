@@ -6,40 +6,167 @@
       /* Inline CSS styles */
       body {
         font-family: Arial, sans-serif;
-        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(120deg, #f6d365, #fda085);
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
         padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       }
 
       h1 {
         color: #333;
+        margin-bottom: 20px;
       }
 
       form {
-        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      input,
+      button {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
       }
 
       input[type="file"] {
+        display: block;
         margin-bottom: 10px;
       }
 
-      button[type="submit"] {
+      button {
         background-color: #4caf50;
         color: white;
-        padding: 10px 20px;
-        border: none;
         cursor: pointer;
       }
 
-      button[type="submit"]:hover {
+      button:hover {
         background-color: #45a049;
+      }
+
+      section {
+        margin-bottom: 20px;
+      }
+
+      section h1 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .box {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .box form {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .box input[type="text"],
+      .box input[type="number"] {
+        flex: 1;
+      }
+      ul {
+        list-style: none;
+      }
+
+      ul li form {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+
+        margin-bottom: 10px;
+        align-items: center;
+        gap: 2vw;
+      }
+
+      img {
+        width: auto;
+        height: 30px;
+        object-fit: cover;
+        margin-right: 10px;
+      }
+
+      .remove-btn {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
-    <h1>Attach Image Form</h1>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-      <input type="file" name="image" accept="image/*" />
-      <button type="submit">Upload</button>
-    </form>
+    <div class="container">
+      <h1>Attach Image Form</h1>
+      <ul>
+        <% imagelist.forEach(image => { %>
+        <li>
+          <form action="/back/deleteimage/<%=image._id %>" method="post">
+            <p><%=image.title %></p>
+            <img class="in_img" src="data:<%=image.image.contentType
+            %>;base64,<%=image.image.data.toString("base64")%>" />
+            <button type="submit" class="remove-btn">Remove</button>
+          </form>
+        </li>
+        <% }) %>
+      </ul>
+
+      <form action="/back/addimage" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required />
+        <button type="submit">Upload</button>
+      </form>
+
+      <section>
+        <h1>Box 1</h1>
+        <form action="/back/changelistname/box1" method="POST">
+          <input type="text" placeholder="ListName" name="ListName" />
+          <button type="submit">Add</button>
+        </form>
+        <form action="/back/addnewitemprice/box1" method="POST">
+          <input type="text" placeholder="NewItem" name="NewItem" />
+          <input type="number" placeholder="Price" name="price" />
+          <button type="submit">Add</button>
+        </form>
+      </section>
+
+      <section>
+        <h1>Box 2</h1>
+        <form action="/back/changelistname/box2" method="POST">
+          <input type="text" placeholder="ListName" name="ListName" />
+          <button type="submit">Add</button>
+        </form>
+        <form action="/back/addnewitemprice/box2" method="POST">
+          <input type="text" placeholder="NewItem" name="NewItem" />
+          <input type="number" placeholder="Price" name="price" />
+          <button type="submit">Add</button>
+        </form>
+      </section>
+
+      <section>
+        <h1>Box 3</h1>
+        <form action="/back/changelistname/box3" method="POST">
+          <input type="text" placeholder="ListName" name="ListName" />
+          <button type="submit">Add</button>
+        </form>
+        <form action="/back/addnewitemprice/box3" method="POST">
+          <input type="text" placeholder="NewItem" name="NewItem" />
+          <input type="number" placeholder="Price" name="price" />
+          <button type="submit">Add</button>
+        </form>
+      </section>
+    </div>
   </body>
 </html>
