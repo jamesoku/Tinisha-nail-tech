@@ -3,8 +3,6 @@ const router = new express.Router();
 const clientCon = require("../controllers/clientCon");
 const validate = require("../util/account-validation");
 
-// router.get("/lon", console.log("yo1"));
-
 router.get("/login", clientCon.buildLogin);
 
 router.get("/logincheck", clientCon.jwtAuth, clientCon.buildback);

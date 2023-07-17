@@ -2,113 +2,14 @@
 <html>
   <head>
     <title>Attach Image Form</title>
-    <style>
-      /* Inline CSS styles */
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(120deg, #f6d365, #fda085);
-      }
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/back.css" />
 
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-
-      h1 {
-        color: #333;
-        margin-bottom: 20px;
-      }
-
-      form {
-        margin-bottom: 20px;
-      }
-
-      input,
-      button {
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 5px;
-        border: none;
-      }
-
-      input[type="file"] {
-        display: block;
-        margin-bottom: 10px;
-      }
-
-      button {
-        background-color: #4caf50;
-        color: white;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: #45a049;
-      }
-
-      section {
-        margin-bottom: 20px;
-      }
-
-      section h1 {
-        color: #333;
-        margin-bottom: 10px;
-      }
-
-      .box {
-        padding: 20px;
-        background-color: #f9f9f9;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-
-      .box form {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .box input[type="text"],
-      .box input[type="number"] {
-        flex: 1;
-      }
-      ul {
-        list-style: none;
-      }
-
-      ul li form {
-        display: flex;
-        flex-direction: row;
-        position: relative;
-
-        margin-bottom: 10px;
-        align-items: center;
-        gap: 2vw;
-      }
-
-      img {
-        width: auto;
-        height: 30px;
-        object-fit: cover;
-        margin-right: 10px;
-      }
-
-      .remove-btn {
-        background-color: red;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-      }
-    </style>
   </head>
   <body>
+    <a href="/" class="home-button">Go Home</a>
     <div class="container">
       <h1>Attach Image Form</h1>
       <ul>
@@ -131,39 +32,73 @@
 
       <section>
         <h1>Box 1</h1>
+        <ul>
+          <% boxes.box1.list.forEach(list => { %>
+          <li>
+            <form action="/back/deleteBoxitem1/<%=list._id %>" method="post">
+              <%=list.name.charAt(0).toUpperCase() +
+              list.name.slice(1).toLowerCase() %> - $<%=list.price%>
+              <button type="submit" class="remove-btn">Remove</button>
+            </form>
+          </li>
+
+          <% }) %>
+        </ul>
         <form action="/back/changelistname/box1" method="POST">
-          <input type="text" placeholder="ListName" name="ListName" />
-          <button type="submit">Add</button>
+          <input type="text" placeholder="<%=boxes.box1.listname %>" name="ListName" required />
+          <button type="submit">Change</button>
         </form>
         <form action="/back/addnewitemprice/box1" method="POST">
-          <input type="text" placeholder="NewItem" name="NewItem" />
-          <input type="number" placeholder="Price" name="price" />
+          <input type="text" placeholder="NewItem" name="NewItem" required />
+          <input type="number" placeholder="Price" name="price" required />
           <button type="submit">Add</button>
         </form>
       </section>
 
       <section>
         <h1>Box 2</h1>
+        <ul>
+          <% boxes.box2.list.forEach(list => { %>
+          <li>
+            <form action="/back/deleteBoxitem2/<%=list._id %>" method="post">
+              <%=list.name.charAt(0).toUpperCase() +
+              list.name.slice(1).toLowerCase() %> - $<%=list.price%>
+              <button type="submit" class="remove-btn">Remove</button>
+            </form>
+          </li>
+          <% }) %>
+        </ul>
         <form action="/back/changelistname/box2" method="POST">
-          <input type="text" placeholder="ListName" name="ListName" />
-          <button type="submit">Add</button>
+          <input type="text" placeholder="<%=boxes.box2.listname %>" name="ListName" required />
+          <button type="submit">Change</button>
         </form>
         <form action="/back/addnewitemprice/box2" method="POST">
-          <input type="text" placeholder="NewItem" name="NewItem" />
-          <input type="number" placeholder="Price" name="price" />
+          <input type="text" placeholder="NewItem" name="NewItem" required/>
+          <input type="number" placeholder="Price" name="price" required />
           <button type="submit">Add</button>
         </form>
       </section>
 
       <section>
         <h1>Box 3</h1>
+        <ul>
+          <% boxes.box3.list.forEach(list => { %>
+          <li>
+            <form action="/back/deleteBoxitem3/<%=list._id %>" method="post">
+            <%=list.name.charAt(0).toUpperCase() +
+            list.name.slice(1).toLowerCase(); %> - $<%=list.price%>
+            <button type="submit" class="remove-btn">Remove</button>
+          </li>
+        </form>
+          <% }) %>
+        </ul>
         <form action="/back/changelistname/box3" method="POST">
-          <input type="text" placeholder="ListName" name="ListName" />
-          <button type="submit">Add</button>
+          <input type="text" placeholder="<%=boxes.box3.listname %>" name="ListName" required />
+          <button type="submit">Change</button>
         </form>
         <form action="/back/addnewitemprice/box3" method="POST">
-          <input type="text" placeholder="NewItem" name="NewItem" />
-          <input type="number" placeholder="Price" name="price" />
+          <input type="text" placeholder="NewItem" name="NewItem" required />
+          <input type="number" placeholder="Price" name="price" required/>
           <button type="submit">Add</button>
         </form>
       </section>

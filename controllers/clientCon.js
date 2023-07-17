@@ -11,9 +11,9 @@ clientCon.buildLogin = async function (req, res, next) {
 };
 
 clientCon.buildback = async function (req, res, next) {
-  const imagelist = await backCon.imageCon.BuildImageList();
-
-  res.render("../views/back", { imagelist });
+  const imagelist = await backCon.imageCon.getImageList();
+  const boxes = await backCon.boxCon.getboxes();
+  res.render("../views/back", { imagelist, boxes });
 };
 
 clientCon.loginclient = async function (req, res) {
@@ -60,12 +60,11 @@ clientCon.loginclient = async function (req, res) {
 clientCon.jwtAuth = (req, res, next) => {
   const token = req.cookies.jwt;
   try {
-    const clientData = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    loggedin = true;
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
     next();
   } catch (error) {
     res.clearCookie("jwt", { httpOnly: true });
-    loggedin = false;
+
     return res.status(403).redirect("/client/login");
   }
 };

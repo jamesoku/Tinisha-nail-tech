@@ -2,6 +2,7 @@ const express = require("express");
 const router = new express.Router();
 const clientCon = require("../controllers/clientCon");
 const backCon = require("../controllers/backCon");
+
 const multer = require("multer");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -13,10 +14,42 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ Storage: storage });
 // router.get("/getimagelist", backCon.imageCon.BuildImageList);
-router.post("/deleteimage/:id", backCon.imageCon.deleteImage);
-router.post("/addimagelist", backCon.imageCon.registerImageList);
-router.post("/addimage", upload.single("image"), backCon.imageCon.addImage);
-router.post("/addboxlist", backCon.boxCon.registerbox);
-router.post("/changelistname/:box", backCon.boxCon.updatelistname);
-router.post("/addnewitemprice/:box", backCon.boxCon.Addprice);
+router.post(
+  "/deleteimage/:id",
+  clientCon.jwtAuth,
+  backCon.imageCon.deleteImage
+);
+router.post(
+  "/deleteBoxitem1/:id",
+  clientCon.jwtAuth,
+  backCon.boxCon.deleteitemNPbox1
+);
+router.post(
+  "/deleteBoxitem2/:id",
+  clientCon.jwtAuth,
+  backCon.boxCon.deleteitemNPbox2
+);
+router.post(
+  "/deleteBoxitem3/:id",
+  clientCon.jwtAuth,
+  backCon.boxCon.deleteitemNPbox3
+);
+// router.post("/addimagelist", backCon.imageCon.registerImageList);
+router.post(
+  "/addimage",
+  clientCon.jwtAuth,
+  upload.single("image"),
+  backCon.imageCon.addImage
+);
+router.post("/addboxlist", clientCon.jwtAuth, backCon.boxCon.registerbox);
+router.post(
+  "/changelistname/:box",
+  clientCon.jwtAuth,
+  backCon.boxCon.updatelistname
+);
+router.post(
+  "/addnewitemprice/:box",
+  clientCon.jwtAuth,
+  backCon.boxCon.Addprice
+);
 module.exports = router;

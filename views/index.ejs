@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
 
-    <title>Document</title>
+    <title>Tanesha's Painted Perfections</title>
   </head>
   <body>
     <header>
@@ -37,7 +37,7 @@
               touch.
             </p>
             <div class="cta">
-              <a href="">Book Now</a>
+              <a href="#contact">Book Now</a>
             </div>
           </div>
           <div class="placeholder">
@@ -46,10 +46,10 @@
             %>;base64,<%=image.image.data.toString("base64")%>" /> <% }) %>
           </div>
         </div>
-        <div class="connect">
+        <!-- <div class="connect">
           <a href=""><i class="bx bxl-twitter"></i></a>
           <a href=""><i class="bx bxl-instagram-alt"></i></a>
-        </div>
+        </div> -->
       </div>
     </section>
     <section id="about">
@@ -67,43 +67,58 @@
 
     <section id="pricing">
       <h2>Pricing</h2>
-      <!-- <div id="price_main">
-        <div class="price_sub">
-          <h2>Full Set</h2>
-          <div>
-            <ul>
-              <li>Basic Manicure - $20</li>
-              <li>Basic Manicure - $20</li>
-              <li>Basic Manicure - $20</li>
-              <li>Basic Manicure - $20</li>
-            </ul>
-          </div>
-        </div>
       <div id="price_main">
         <div class="price_sub">
-          <h2>Manicure</h2>
+          <h2>
+            <%=boxes.box1.listname.charAt(0).toUpperCase() +
+            boxes.box1.listname.slice(1).toLowerCase();%>
+          </h2>
+          <div>
+            <ul>
+              <% boxes.box1.list.forEach(list => { %>
+              <li>
+                <%=list.name.charAt(0).toUpperCase() +
+                list.name.slice(1).toLowerCase() %> - $<%=list.price%>
+              </li>
+              <% }) %>
+            </ul>
+          </div>
+        </div>
 
-          <div>
-            <ul>
-              <li>Basic Manicure - $20</li>
-              <li>Basic Manicure - $20</li>
-              <li>Basic Manicure - $20</li>
-              <li>Basic Manicure - $20</li>
-            </ul>
-          </div>
-        </div>
         <div class="price_sub">
-          <h2>Pedicure</h2>
+          <h2>
+            <%=boxes.box2.listname.charAt(0).toUpperCase() +
+            boxes.box2.listname.slice(1).toLowerCase();%>
+          </h2>
           <div>
             <ul>
-              <li>Basic Pedicure - $20</li>
-              <li>Basic Pedicure - $20</li>
-              <li>Basic Pedicure - $20</li>
-              <li>Basic Pedicure - $20</li>
+              <% boxes.box2.list.forEach(list => { %>
+              <li>
+                <%=list.name.charAt(0).toUpperCase() +
+                list.name.slice(1).toLowerCase() %> - $<%=list.price%>
+              </li>
+              <% }) %>
             </ul>
           </div>
         </div>
-      </div> -->
+
+        <div class="price_sub">
+          <h2>
+            <%=boxes.box3.listname.charAt(0).toUpperCase() +
+            boxes.box3.listname.slice(1).toLowerCase();%>
+          </h2>
+          <div>
+            <ul>
+              <% boxes.box3.list.forEach(list => { %>
+              <li>
+                <%=list.name.charAt(0).toUpperCase() +
+                list.name.slice(1).toLowerCase(); %> - $<%=list.price%>
+              </li>
+              <% }) %>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="contact">
@@ -113,22 +128,24 @@
       <div class="container contact__container">
         <div class="contact__options">
           <article class="contact__option">
-            <a href=""><i class="bx bxl-gmail"></i></a>
+            <a href=""><i class="bx bxs-envelope"></i></a>
             <h4>Email</h4>
-            <h5>okujames7@gmail.com</h5>
-            <a href="mailto:@gmail.com" target="_blank">Send a message</a>
+            <h5>taneshabautista@yahoo.com</h5>
+            <a href="mailto:okujames7@gmail.com" target="_blank"
+              >Send a message</a
+            >
           </article>
           <article class="contact__option">
             <a href=""><i class="bx bxl-messenger"></i></a>
             <h4>Messenger</h4>
             <h5>Tanesha Bautista</h5>
-            <a href="https://m.me/Okujame" target="_blank">Send a message</a>
+            <a href="https://m.me/tanesha.bautista" target="_blank">Send a message</a>
           </article>
           <article class="contact__option">
-            <a href=""><i class="bx bxl-instagram-alt"></i></a>
-            <h4>Instagram</h4>
-            <h5>Tanes08_</h5>
-            <a href="https://m.me/Okujame" target="_blank">Send a message</a>
+            <a href=""><i class='bx bxl-whatsapp' ></i></i></a>
+            <h4>Whatsapp</h4>
+            <h5>208-821-1497</h5>
+            <a href="https://api.whatsapp.com/send?phone=2088211497" target="_blank">Send a message</a>
           </article>
         </div>
         <form id="contact">

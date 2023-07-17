@@ -3,6 +3,7 @@ const BoxList = require("../models/boxes-schema");
 
 imageCon = {};
 boxCon = {};
+
 //image
 imageCon.getImageList = async function (req, res) {
   try {
@@ -25,31 +26,16 @@ imageCon.deleteImage = async function (req, res) {
       { $pull: { images: { _id: Id } } }
     );
     console.log("Subdocument deleted successfully");
+    const imagelist = await imageCon.getImageList();
+    const boxes = await boxCon.getboxes();
+    res.render("../views/back", { imagelist, boxes });
   } catch (error) {
     res.status(500).json({ error: "An error occurred during deletion" });
   }
 };
-// imageCon.buildimage = async function (data) {
-//   let list = `<div class="placeholder">`;
-//   data.images.forEach((image) => {
-//     const base64Image = image.image.data.toString("base64");
-//     const dataUrl = `data:${image.image.contentType};base64,${base64Image}`;
-//     list += `
-//       <img class="mySlides"  src="${dataUrl}"  alt="${image.title}" />
-//     `;
-//   });
-//   list += `</div>`;
-//   return list;
-// };
-
-// imageCon.BuildImageList = async function (req, res, next) {
-//   let Imagedata = await imageCon.getImageList();
-//   // Imageslide = await imageCon.buildimage(data);
-
-//   return Imagedata.images;
-// };
 
 imageCon.registerImageList = async function (req, res) {
+  console.log("hey");
   try {
     const emptyImageList = new ImageList({ images: [] });
     await emptyImageList.save();
@@ -81,7 +67,10 @@ imageCon.addImage = async function (req, res) {
     if (!updatedparam) {
       return res.status(404).json({ message: "Parameter not found" });
     }
-    res.status(200).json({ message: "item updated successfully" });
+
+    const imagelist = await imageCon.getImageList();
+    const boxes = await boxCon.getboxes();
+    res.render("../views/back", { imagelist, boxes });
   } catch (error) {
     res
       .status(500)
@@ -131,7 +120,9 @@ boxCon.updatelistname = async function (req, res) {
         },
         { new: true }
       );
-      res.status(201).json({ message: "Boxname registered successfully" });
+      const imagelist = await imageCon.getImageList();
+      const boxes = await boxCon.getboxes();
+      res.render("../views/back", { imagelist, boxes });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "An error occurred  box registration" });
@@ -185,7 +176,9 @@ boxCon.Addprice = async function (req, res) {
     if (!newitemprice) {
       return res.status(404).json({ message: "Parameter not found" });
     }
-    res.status(200).json({ message: "item updated successfully" });
+    const imagelist = await imageCon.getImageList();
+    const boxes = await boxCon.getboxes();
+    res.render("../views/back", { imagelist, boxes });
   } catch (error) {
     res
       .status(500)
@@ -193,4 +186,58 @@ boxCon.Addprice = async function (req, res) {
   }
 };
 
+boxCon.deleteitemNPbox1 = async function (req, res) {
+  const Id = req.params.id;
+  console.log(Id);
+  try {
+    const result = await BoxList.updateOne(
+      {
+        _id: "64af7be04dabaa1f43fad0fc",
+      },
+      { $pull: { list: { _id: Id } } }
+    );
+    console.log("Subdocument deleted successfully");
+    const imagelist = await imageCon.getImageList();
+    const boxes = await boxCon.getboxes();
+    res.render("../views/back", { imagelist, boxes });
+  } catch (error) {
+    res.status(500).json({ error: "An error occurred during deletion" });
+  }
+};
+boxCon.deleteitemNPbox2 = async function (req, res) {
+  const Id = req.params.id;
+  console.log(Id);
+  try {
+    const result = await BoxList.updateOne(
+      {
+        _id: "64af7c044dabaa1f43fad0fe",
+      },
+      { $pull: { list: { _id: Id } } }
+    );
+    console.log("Subdocument deleted successfully");
+    const imagelist = await imageCon.getImageList();
+    const boxes = await boxCon.getboxes();
+    res.render("../views/back", { imagelist, boxes });
+  } catch (error) {
+    res.status(500).json({ error: "An error occurred during deletion" });
+  }
+};
+boxCon.deleteitemNPbox3 = async function (req, res) {
+  const Id = req.params.id;
+  console.log(Id);
+  try {
+    const result = await BoxList.updateOne(
+      {
+        _id: "64af7c074dabaa1f43fad100",
+      },
+      { $pull: { list: { _id: Id } } }
+    );
+    console.log(result, "Subdocument deleted successfully");
+    const imagelist = await imageCon.getImageList();
+    const boxes = await boxCon.getboxes();
+    res.render("../views/back", { imagelist, boxes });
+  } catch (error) {
+    res.status(500).json({ error: "An error occurred during deletion" });
+  }
+};
 module.exports = { imageCon, boxCon };

@@ -13,10 +13,6 @@ footer {
   font-size: 0.9rem;
 }
 
-/* footer a {
-  
-} */
-
 .footer__logo {
   font-size: 2rem;
   font-weight: 500;
@@ -167,6 +163,7 @@ ul {
   object-fit: cover;
 }
 .About_par {
+  text-align: center;
   width: 1280px;
   max-width: 95%;
 }
@@ -392,6 +389,12 @@ section {
 }
 
 @media screen and (max-width: 767px) {
+  #about,
+  #pricing,
+  #contact {
+    padding-top: 8vh;
+  }
+
   .permalinks {
     flex-direction: column;
     gap: 1.5rem;
@@ -403,7 +406,7 @@ section {
     width: 100%;
   }
   .container.contact__container {
-    padding-top: 8vh;
+    padding-top: 6vh;
     /* width: 58%; */
     display: flex;
     flex-direction: column;
@@ -423,6 +426,7 @@ section {
   }
 
   .container .logo h2 {
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -462,8 +466,10 @@ section {
   }
 
   .hero .mid .desc h2 {
-    font-size: 2.2em;
-    margin-bottom: 20px;
+    font-weight: 600;
+    padding-top: 20px;
+    font-size: 1.3em;
+    margin-bottom: 10px;
   }
 
   .hero .mid .desc .cta a {
