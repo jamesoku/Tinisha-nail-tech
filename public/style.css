@@ -158,9 +158,10 @@ ul {
 
 #about-pic {
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  background: url("./profile.jpg") center/cover no-repeat;
+  /* object-fit: cover; */
 }
 .About_par {
   text-align: center;
