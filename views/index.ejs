@@ -9,6 +9,12 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<!-- <script type="text/javascript">
+
+</script> -->
 
     <title>Tanesha's Painted Perfections</title>
   </head>
@@ -55,8 +61,8 @@
     <section id="about">
       
       <h2>About me</h2>
-      <!-- <img id="about-pic" src="./public/profile.jpg" alt="" /> -->
-      <div id="about-pic"></div>
+      <img id="about-pic"/>
+      
       <p class="About_par">
          A passionate artist dedicated to capturing perfection on canvas. With a
         love for vibrant colors and meticulous detail, Tinasha's paintings evoke
@@ -151,7 +157,7 @@
             <a href="https://api.whatsapp.com/send?phone=2088211497" target="_blank">Send a message</a>
           </article>
         </div>
-        <form id="contact">
+        <form id="contact" class="emailform" onsubmit="sendEmail(event)">
           <input type="text" name="name" placeholder="Full Name" required />
           <input type="email" name="email" placeholder="Your Email" required />
           <textarea
@@ -179,6 +185,11 @@
       </div>
     </footer>
     <script>
+      
+     
+
+      
+      
       var myIndex = 0;
       carousel();
 
@@ -194,6 +205,33 @@
         }
         x[myIndex - 1].style.display = "block";
         setTimeout(carousel, 2000); // Change image every 2 seconds
+      }
+      emailjs.init("y2BEHO8adyHmmPBsz");
+
+      function sendEmail(event) {
+        console.log("formData1")
+
+        event.preventDefault(); // Prevent form submission
+        console.log("formData2")
+        // Get the form data
+        var form = document.querySelector("form#contact");
+        
+        var formData = {
+          name: document.querySelector('input[name="name"]').value,
+          email: document.querySelector('input[name="email"]').value,
+          message: document.querySelector('textarea[name="message"]').value
+        };
+        console.log(formData)
+        // Send the email
+        emailjs.send('service_jras7og', 'template_kz6p04p', formData)
+          .then(function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+            alert('Email sent successfully!');
+            form.reset(); // Reset the form fields after successful submission
+          }, function (error) {
+            console.log('FAILED...', error);
+            alert('Failed to send email. Please try again later.');
+          });
       }
     </script>
   </body>

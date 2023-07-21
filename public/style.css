@@ -160,7 +160,7 @@ ul {
   border-radius: 50%;
   width: 200px;
   height: 200px;
-  background: url("./profile.jpg") center/cover no-repeat;
+  background: url("./images/profile.jpg") center/cover no-repeat;
   /* object-fit: cover; */
 }
 .About_par {
